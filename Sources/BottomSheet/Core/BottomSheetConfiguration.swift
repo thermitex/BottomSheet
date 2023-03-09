@@ -8,9 +8,10 @@
 
 import UIKit
 
-public struct BottomSheetConfiguration {
+@objc
+public class BottomSheetConfiguration: NSObject {
     public enum PullBarConfiguration {
-        public struct PullBarAppearance {
+        public class PullBarAppearance {
             public let height: CGFloat
 
             public init(height: CGFloat) {
@@ -24,7 +25,7 @@ public struct BottomSheetConfiguration {
         public static let `default`: PullBarConfiguration = .visible(PullBarAppearance(height: 20))
     }
 
-    public struct ShadowConfiguration {
+    public class ShadowConfiguration {
         public let backgroundColor: UIColor
         public let blur: UIBlurEffect.Style?
 
@@ -40,19 +41,15 @@ public struct BottomSheetConfiguration {
     public let pullBarConfiguration: PullBarConfiguration
     public let shadowConfiguration: ShadowConfiguration
 
-    public init(
-        cornerRadius: CGFloat,
-        pullBarConfiguration: PullBarConfiguration,
-        shadowConfiguration: ShadowConfiguration
+    @objc public init(
+        cornerRadius: CGFloat
     ) {
         self.cornerRadius = cornerRadius
-        self.pullBarConfiguration = pullBarConfiguration
-        self.shadowConfiguration = shadowConfiguration
+        self.pullBarConfiguration = .default
+        self.shadowConfiguration = .default
     }
 
     public static let `default` = BottomSheetConfiguration(
-        cornerRadius: 10,
-        pullBarConfiguration: .default,
-        shadowConfiguration: .default
+        cornerRadius: 10
     )
 }
