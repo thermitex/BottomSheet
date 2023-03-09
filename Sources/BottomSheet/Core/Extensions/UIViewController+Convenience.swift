@@ -76,6 +76,7 @@ public extension UIViewController {
 
     private static var bottomSheetTransitionDelegateKey: UInt8 = 0
 
+    @objc
     func presentBottomSheet(viewController: UIViewController, configuration: BottomSheetConfiguration) {
         weak var presentingViewController = self
         weak var currentBottomSheetTransitionDelegate: UIViewControllerTransitioningDelegate?
@@ -95,6 +96,7 @@ public extension UIViewController {
         present(viewController, animated: true, completion: nil)
     }
 
+    @objc
     func presentBottomSheetInsideNavigationController(viewController: UIViewController, configuration: BottomSheetConfiguration) {
         let navigationController = BottomSheetNavigationController(rootViewController: viewController, configuration: configuration)
         presentBottomSheet(viewController: navigationController, configuration: configuration)
